@@ -1,28 +1,35 @@
-package by.radevich.jspexample;
+package by.radevich.jspexample.servlet;
 
 import java.io.*;
 
+import by.radevich.jspexample.model.Person;
+import by.radevich.jspexample.service.PersonService;
+import by.radevich.jspexample.service.PersonServiceImpl;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "persons", value = "/persons")
 public class PersonServlet extends HttpServlet {
-    private String message;
+    private PersonService personService;
 
     public void init() {
-        message = "Hello World!";
+        personService = new PersonServiceImpl();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.setAttribute("people", personService.findAll());
+        request.getRequestDispatcher("people.jsp").forward(request,response);
 
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
     }
 
-    public void destroy() {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        var name = req.getParameter("name");
+        int age = Integer.parseInt(req.getParameter("age"));
+        var newPerson = new Person(name,age);
+        personService.save(newPerson);
+        req.setAttribute("people", personService.findAll());
+        req.getRequestDispatcher("people.jsp").forward(req,resp);
     }
 }

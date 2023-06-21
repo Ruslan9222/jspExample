@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PersonService {
-    private List<Person> persons = new ArrayList<>();
+public class PersonServiceImpl implements PersonService {
+    private final List<Person> persons = new ArrayList<>();
 
     public void save(Person person){
         persons.add(person);
