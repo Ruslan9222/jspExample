@@ -1,10 +1,10 @@
-package by.radevich.jspexample.servlet;
+package by.radevich.jspexample.web.servlet;
 
 import java.io.*;
 
 import by.radevich.jspexample.model.Person;
-import by.radevich.jspexample.service.PersonService;
-import by.radevich.jspexample.service.PersonServiceImpl;
+import by.radevich.jspexample.web.service.PersonService;
+import by.radevich.jspexample.web.service.PersonServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

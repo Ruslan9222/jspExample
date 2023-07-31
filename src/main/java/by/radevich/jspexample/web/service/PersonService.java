@@ -1,4 +1,4 @@
-package by.radevich.jspexample.service;
+package by.radevich.jspexample.web.service;
 
 import by.radevich.jspexample.model.Person;
 

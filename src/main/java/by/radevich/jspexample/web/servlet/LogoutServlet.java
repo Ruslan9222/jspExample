@@ -1,4 +1,4 @@
-package by.radevich.jspexample.servlet;
+package by.radevich.jspexample.web.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

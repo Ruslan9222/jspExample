@@ -8,9 +8,5 @@
 <h1><%= "Please, enter your login!" %>
 </h1>
 <br/>
-<form action="/login" method="post">
-    <input type="text" name="login"/>
-    <input type="submit" value="Value">
-</form>
 </body>
 </html>
